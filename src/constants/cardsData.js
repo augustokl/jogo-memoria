@@ -13,43 +13,44 @@ import { SiJavascript, SiRails } from 'react-icons/si';
 
 const cards = [
   {
-    matchId: 1,
+    matchId: 'react',
     icon: FaReact,
   },
   {
-    matchId: 2,
+    matchId: 'angular',
     icon: FaAngular,
   },
   {
-    matchId: 3,
+    matchId: 'vue',
     icon: FaVuejs,
   },
   {
-    matchId: 4,
+    matchId: 'html5',
     icon: FaHtml5,
   },
   {
-    matchId: 5,
+    matchId: 'sass',
     icon: FaSass,
   },
   {
-    matchId: 6,
+    id: 6,
+    matchId: 'php',
     icon: FaPhp,
   },
   {
-    matchId: 7,
+    matchId: 'rails',
     icon: SiRails,
   },
   {
-    matchId: 8,
+    matchId: 'java',
     icon: FaJava,
   },
   {
-    matchId: 9,
+    matchId: 'python',
     icon: FaPython,
   },
   {
-    matchId: 10,
+    matchId: 'javascript',
     icon: SiJavascript,
   },
 ];

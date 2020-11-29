@@ -1,7 +1,7 @@
 const CardSelectedTypes = {
-  SET_SELECT_CARD: '@card/SELECT_CARD',
-  SET_MATCH: '@card/SET_MATCH',
-  ADD_COUNT: '@card/ADD_COUNT',
+  SET_MATCH: '@card/MATCH',
+  SET_CARD_OPEN: '@card/CARD_OPEN',
+  PLAY_AGAIN: '@card/PLAY_AGAIN',
 };
 
 export default CardSelectedTypes;

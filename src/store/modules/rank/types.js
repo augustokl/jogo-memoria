@@ -1,7 +1,5 @@
-const CardSelectedTypes = {
-  SET_SELECT_CARD: '@card/SELECT_CARD',
-  SET_MATCH: '@card/SET_MATCH',
-  ADD_COUNT: '@card/ADD_COUNT',
+const RankTypes = {
+  UPDATE_RANK: '@rank/UPDATE_RANK',
 };
 
-export default CardSelectedTypes;
+export default RankTypes;

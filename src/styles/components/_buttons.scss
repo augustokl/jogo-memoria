@@ -18,4 +18,16 @@
       color: $color-grey-light-2;
     }
   }
+
+  &--modal {
+    background-color: $color-secondary-dark;
+    color: $color-white;
+    padding: 1rem;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: $color-secondary-light;
+    }
+  }
 }

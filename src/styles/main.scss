@@ -4,7 +4,10 @@
 
 @import 'pages/home';
 
-@import 'components/header';
-@import 'components/card';
+@import 'componentsReact/header';
+@import 'componentsReact/card';
+@import 'componentsReact/contador';
+@import 'componentsReact/modal';
+
 @import 'components/buttons';
-@import 'components/contador';
+@import 'components/list';

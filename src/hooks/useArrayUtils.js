@@ -12,8 +12,8 @@ const useArrayUtils = (array) => {
     for (let i = suffleArray.length - 1; i > 0; i -= 1) {
       const j = Math.floor(Math.random() * (i + 1));
       const temp = suffleArray[i];
-      suffleArray[i] = suffleArray[j];
-      suffleArray[j] = temp;
+      suffleArray[i] = { ...suffleArray[j], id: i };
+      suffleArray[j] = { ...temp, id: j };
     }
 
     return suffleArray;

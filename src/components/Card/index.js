@@ -1,53 +1,43 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BsQuestion } from 'react-icons/bs';
 import {
-  actionAddCount,
+  actionOpenCard,
   actionSetMatch,
-  actionSetSelected,
 } from 'store/modules/cardSelected/actions';
 
-const Card = ({ Icon, matchId }) => {
-  const [open, setOpen] = useState(false);
-
+const Card = ({ Icon, ...card }) => {
   const dispatch = useDispatch();
-  const { target, matchList } = useSelector((state) => state.cardSelected);
+  const { matchList, cardsOpen } = useSelector((state) => state.cardSelected);
 
   const stayOpen = useMemo(() => {
-    return !!matchList.find((matchItem) => matchItem === matchId);
-  }, [matchId, matchList]);
+    return !!matchList.find((matchItem) => matchItem === card.matchId);
+  }, [card, matchList]);
+
+  const isOpen = useMemo(() => {
+    return stayOpen || !!cardsOpen.find((cardOpen) => cardOpen.id === card.id);
+  }, [card, cardsOpen, stayOpen]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (open && target !== matchId && !stayOpen) {
-        dispatch(actionSetSelected(0));
-        setOpen(false);
+      if (
+        cardsOpen.length === 2 &&
+        cardsOpen[0].matchId !== cardsOpen[1].matchId
+      ) {
+        dispatch(actionOpenCard());
       }
     }, 1000);
     return () => clearTimeout(timer);
-  }, [matchId, open, target, dispatch]);
-
-  useEffect(() => {
-    if (!target && !stayOpen) {
-      setOpen(false);
-    }
-  }, [target, matchId, stayOpen]);
+  }, [dispatch, cardsOpen]);
 
   const onClick = useCallback(() => {
-    setOpen(true);
-
-    if (!target) {
-      dispatch(actionSetSelected(matchId));
-      return;
+    if (cardsOpen.length < 2) {
+      dispatch(actionOpenCard(card));
     }
-
-    if (target === matchId) {
-      dispatch(actionSetMatch(matchId));
-      dispatch(actionSetSelected(0));
+    if (cardsOpen.length === 1 && cardsOpen[0].matchId === card.matchId) {
+      dispatch(actionSetMatch(card.matchId));
     }
-
-    dispatch(actionAddCount());
-  }, [target, dispatch, matchId]);
+  }, [dispatch, card, cardsOpen]);
 
   return (
     <>
@@ -59,14 +49,14 @@ const Card = ({ Icon, matchId }) => {
       >
         <div
           className={`card__side card__side--front ${
-            open ? 'card__side--front-flip' : ''
+            isOpen ? 'card__side--front-flip' : ''
           }`}
         >
           <BsQuestion className="card__image card__image--front" />
         </div>
         <div
           className={`card__side card__side--back ${
-            open ? 'card__side--back-flip' : ''
+            isOpen ? 'card__side--back-flip' : ''
           }`}
         >
           <Icon className="card__image card__image--back" />

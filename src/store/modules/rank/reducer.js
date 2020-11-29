@@ -1,26 +1,21 @@
 import Types from './types';
 
 const INITIAL_STATE = {
-  target: 0,
-  matchList: [],
-  count: 0,
+  rank: [],
 };
 
-export default function cardSelected(state = INITIAL_STATE, action) {
+export default function rank(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case Types.SET_SELECT_CARD: {
+    case Types.UPDATE_RANK: {
+      const updatedList = [...state.rank, action.payload].sort(
+        (a, b) => a.plays - b.plays
+      );
+
       return {
         ...state,
-        target: action.payload,
+        rank: updatedList,
+        actualPlayer: false,
       };
-    }
-    case Types.SET_MATCH: {
-      const newMatchList = [...state.matchList, action.payload];
-      return { ...state, matchList: newMatchList };
-    }
-    case Types.ADD_COUNT: {
-      const newCount = state.count + 1;
-      return { ...state, count: newCount };
     }
     default:
       return state;

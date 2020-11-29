@@ -1,8 +1,8 @@
 import Types from './types';
 
 const INITIAL_STATE = {
-  target: 0,
   matchList: [],
+  cardsOpen: [],
   count: 0,
 };
 
@@ -16,11 +16,32 @@ export default function cardSelected(state = INITIAL_STATE, action) {
     }
     case Types.SET_MATCH: {
       const newMatchList = [...state.matchList, action.payload];
-      return { ...state, matchList: newMatchList };
+      return {
+        ...state,
+        matchList: newMatchList,
+        cardsOpen: [],
+      };
     }
-    case Types.ADD_COUNT: {
-      const newCount = state.count + 1;
-      return { ...state, count: newCount };
+    case Types.SET_CARD_OPEN: {
+      let newOpenList = [];
+      let { count } = state;
+
+      if (action.payload) {
+        newOpenList = [...state.cardsOpen, action.payload];
+      }
+
+      if (newOpenList.length === 2) {
+        count += 1;
+      }
+
+      return { ...state, cardsOpen: newOpenList, count };
+    }
+    case Types.PLAY_AGAIN: {
+      return {
+        matchList: [],
+        cardsOpen: [],
+        count: 0,
+      };
     }
     default:
       return state;
