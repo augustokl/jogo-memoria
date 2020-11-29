@@ -2,13 +2,13 @@
   perspective: 150rem;
   -moz-perspective: 150rem;
   position: relative;
-  height: 20rem;
+  height: 10rem;
   border: none;
   background-color: transparent;
   transition: all 0.4s ease;
 
   &__side {
-    height: 20rem;
+    height: 10rem;
     transition: all 0.8s ease;
     position: absolute;
     top: 0;
@@ -49,12 +49,16 @@
     }
   }
 
+  &--disable {
+    opacity: 0.4;
+  }
+
   &__image {
-    height: 10rem;
-    width: 10rem;
+    height: 8rem;
+    width: 8rem;
 
     &--front {
-      color: $color-text;
+      color: $color-deep-blue;
     }
     &--back {
       color: $color-white;

@@ -1,55 +1,19 @@
-import Card from 'components/Card';
-import { FaReact, FaAngular, FaVuejs, FaGoogle, FaSass } from 'react-icons/fa';
+import useArrayUtils from 'hooks/useArrayUtils';
 
-const cards = [
-  {
-    title: 'hello',
-    icon: FaReact,
-  },
-  {
-    title: 'teste',
-    icon: FaAngular,
-  },
-  {
-    title: 2,
-    icon: FaVuejs,
-  },
-  {
-    title: 4,
-    icon: FaGoogle,
-  },
-  {
-    title: 4,
-    icon: FaSass,
-  },
-  {
-    title: 'hello',
-    icon: FaReact,
-  },
-  {
-    title: 'teste',
-    icon: FaAngular,
-  },
-  {
-    title: 2,
-    icon: FaVuejs,
-  },
-  {
-    title: 4,
-    icon: FaGoogle,
-  },
-  {
-    title: 4,
-    icon: FaSass,
-  },
-];
+import cardsData from 'constants/cardsData';
+
+import Card from 'components/Card';
+import Contador from 'components/Contador';
 
 const Home = () => {
+  const { suffleCards } = useArrayUtils(cardsData);
+
   return (
     <div className="home">
+      <Contador />
       <div className="home__card--box">
-        {cards.map(({ icon }) => (
-          <Card Icon={icon} />
+        {suffleCards.map(({ icon, matchId }) => (
+          <Card key={Math.random()} Icon={icon} matchId={matchId} />
         ))}
       </div>
     </div>
