@@ -1,5 +1,5 @@
 # Instalar Dependências
-ë necessário ter o yarn ou npm instalado
+É necessário ter o yarn ou npm instalado
 
 ~~~console
 yarn
