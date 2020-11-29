@@ -39,7 +39,7 @@ const Card = ({ Icon, ...card }) => {
       dispatch(actionOpenCard(card));
     }
 
-    if (cardsOpen.length === 1 && cardsOpen.includes(card.matchId)) {
+    if (cardsOpen.length === 1 && cardsOpen[0].matchId === card.matchId) {
       dispatch(actionSetMatch(card.matchId));
     }
   }, [dispatch, card, cardsOpen, isOpen]);

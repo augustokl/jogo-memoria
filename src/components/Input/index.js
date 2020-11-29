@@ -1,6 +1,6 @@
 const Input = ({ value, setValue }) => (
   <input
-    className="modalContent__body--input"
+    className="input"
     placeholder="Nome"
     value={value}
     onChange={({ target }) => setValue(target.value)}

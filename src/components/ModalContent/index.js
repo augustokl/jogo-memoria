@@ -12,7 +12,9 @@ const ModalContent = ({
       <h1 className="modalContent__title">{title}</h1>
       <div className="modalContent__body">
         {message && <p className="modalContent__body--message">{message}</p>}
-        {componentBody}
+        <form onSubmit={buttonAction} className="modalContent__body--form">
+          {componentBody}
+        </form>
       </div>
       <div className="modalContent__footer">
         <Button text={buttonLabel} action={buttonAction} />
