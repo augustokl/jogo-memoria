@@ -1,0 +1,26 @@
+.header {
+  font-family: 'Goldman', cursive;
+  height: 10vh;
+  background-color: $color-deep-blue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3rem;
+
+  &__logo {
+    height: 5.1rem;
+    width: 5.1rem;
+    fill: $color-white;
+  }
+
+  &__text {
+    color: $color-white;
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  &__nav {
+    height: 100%;
+  }
+}
