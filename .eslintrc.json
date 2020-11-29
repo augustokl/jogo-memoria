@@ -25,6 +25,7 @@
     "react-hooks/rules-of-hooks": "error",
     "react/prop-types": "off",
     "no-unused-expressions": "off",
+    "no-alert": "off",
     "react-hooks/exhaustive-deps": "warn",
     "react/jsx-filename-extension": [
       "error",

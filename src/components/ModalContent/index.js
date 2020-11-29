@@ -1,4 +1,4 @@
-import ButtonModal from 'components/ButtonModal';
+import Button from 'components/Button';
 
 const ModalContent = ({
   title,
@@ -15,7 +15,7 @@ const ModalContent = ({
         {componentBody}
       </div>
       <div className="modalContent__footer">
-        <ButtonModal text={buttonLabel} action={buttonAction} />
+        <Button text={buttonLabel} action={buttonAction} />
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ export default function rank(state = INITIAL_STATE, action) {
 
       return {
         ...state,
-        rank: updatedList,
+        rank: updatedList.length > 5 ? updatedList.slice(0, 5) : updatedList,
         actualPlayer: false,
       };
     }

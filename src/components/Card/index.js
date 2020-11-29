@@ -31,13 +31,18 @@ const Card = ({ Icon, ...card }) => {
   }, [dispatch, cardsOpen]);
 
   const onClick = useCallback(() => {
+    if (isOpen) {
+      return;
+    }
+
     if (cardsOpen.length < 2) {
       dispatch(actionOpenCard(card));
     }
-    if (cardsOpen.length === 1 && cardsOpen[0].matchId === card.matchId) {
+
+    if (cardsOpen.length === 1 && cardsOpen.includes(card.matchId)) {
       dispatch(actionSetMatch(card.matchId));
     }
-  }, [dispatch, card, cardsOpen]);
+  }, [dispatch, card, cardsOpen, isOpen]);
 
   return (
     <>

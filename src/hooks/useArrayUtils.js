@@ -7,7 +7,7 @@ const useArrayUtils = (array) => {
     }, []);
   }, [array]);
 
-  const suffleCards = useMemo(() => {
+  const suffleCards = () => {
     const suffleArray = [...duplicateCards];
     for (let i = suffleArray.length - 1; i > 0; i -= 1) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -17,7 +17,7 @@ const useArrayUtils = (array) => {
     }
 
     return suffleArray;
-  }, [duplicateCards]);
+  };
 
   return { duplicateCards, suffleCards };
 };

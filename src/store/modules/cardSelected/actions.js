@@ -5,11 +5,11 @@ export const actionSetMatch = (matchId) => ({
   payload: matchId,
 });
 
-export const actionOpenCard = (openId = 0) => ({
+export const actionOpenCard = (openId) => ({
   type: Types.SET_CARD_OPEN,
   payload: openId,
 });
 
-export const actionPlayAgain = () => ({
-  type: Types.PLAY_AGAIN,
+export const actionClearCount = () => ({
+  type: Types.CLEAR_COUNT,
 });
