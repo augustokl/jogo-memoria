@@ -16,6 +16,7 @@ export default function cardSelected(state = INITIAL_STATE, action) {
         ...state,
         matchList: newMatchList,
         cardsOpen: [],
+        count: state.count + 1,
       };
     }
     case Types.SET_CARD_OPEN: {

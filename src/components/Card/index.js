@@ -20,13 +20,11 @@ const Card = ({ Icon, ...card }) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (
-        cardsOpen.length === 2 &&
-        cardsOpen[0].matchId !== cardsOpen[1].matchId
-      ) {
+      if (cardsOpen.length === 2) {
         dispatch(actionOpenCard());
       }
     }, 1000);
+
     return () => clearTimeout(timer);
   }, [dispatch, cardsOpen]);
 
@@ -35,13 +33,16 @@ const Card = ({ Icon, ...card }) => {
       return;
     }
 
-    if (cardsOpen.length < 2) {
-      dispatch(actionOpenCard(card));
+    if (cardsOpen.length === 2) {
+      return;
     }
 
-    if (cardsOpen.length === 1 && cardsOpen[0].matchId === card.matchId) {
+    if (cardsOpen.length && cardsOpen[0].matchId === card.matchId) {
       dispatch(actionSetMatch(card.matchId));
+      return;
     }
+
+    dispatch(actionOpenCard(card));
   }, [dispatch, card, cardsOpen, isOpen]);
 
   return (
